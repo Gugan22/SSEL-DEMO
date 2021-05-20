@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSEL-Demo</title>
+    <link rel="stylesheet" href="Asset/css/style.css">
+
+</head>
+<body>
+
+    <div id="lociContainer"></div>
+      <div id="cshContainer"></div>
+      <h4 id="ans"></h4>
+    <div>
+        <table id="tableContainer" class="table" >
+        </table>
+    </div>
+ 
+    <div><a href="" onclick="submit()" class="button2">--submit--</a></div>
+
+
+    <script type="text/x-handlebars-template" id="loci">
+       <select onchange="loci(value)" id="Location">
+           <option value="">Select One</option>
+           {{#each this}}
+           <option value="{{locid}}">{{locname}}</option>
+           {{/each}}
+       </select>
+    </script>
+
+    <script type="text/x-handlebars-template" id="cshMode">
+        <select onchange="salesType(value)" id="SaleType">
+            <option value="">Select One</option>
+            {{#each this}}
+            <option value="{{subschid}}">{{subschname}}</option>
+            {{/each}}
+        </select>
+    </script>
+
+    <script type="text/x-handlebars-template" id="company">
+        
+        <tr>
+            <th>Company Id</th>
+            <th>Company</th>
+            <th>Sch {{acctid}}</th>
+            <th>SchId</th>
+        </tr>
+        {{#each table}}
+        <tr>
+            <td>{{acctid}}</td>
+            <td>{{acctname}}</td>
+            <td id="schMastContainer">
+                <select onchange="SCH({{acctid}}, value)" id="SaleType">
+                    <option value="">Select One</option>
+                    {{#each ../select}}
+                    <option value="{{schid}}">{{schname}}</option>
+                    {{/each}}
+                </select>
+            </td>
+            <td id="{{acctid}}">none</td>
+        </tr>
+        {{/each}}
+
+        
+        
+    </script>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="Asset/js/Sale.js"></script> 
+    <script src="Asset/js/Handle.js"></script> 
+    <script src="Asset/js/table.js"></script> 
+    <script src="Asset/js/placeOrder.js"></script>
+</body>
+</html>
